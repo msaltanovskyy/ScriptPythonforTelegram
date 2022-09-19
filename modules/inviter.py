@@ -1,7 +1,7 @@
 from colorama import Fore
 
 from modules.auth import auth_user
-from setting import sort_file
+from setting import sort_file, Pause
 from loguru import logger
 
 print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
@@ -16,6 +16,7 @@ def Inviter():
     link = app.create_chat_invite_link(chat_id)
     user_id = sort_file()
     for user in user_id:
+        Pause()
         app.add_chat_members(user, link)
         logger.info(f"User added to group - id| {user} |")
 

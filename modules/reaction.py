@@ -2,7 +2,7 @@ from colorama import Fore
 from loguru import logger
 
 from modules.auth import auth_user
-from setting import add_group
+from setting import add_group, Pause
 
 print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
                    "\n@@@@Скрипт для реакций на последние отправленые сообщения@@@@\n"
@@ -19,6 +19,7 @@ def reaction_massage(_, messages):
             logger.info(f"FIND NEW MESSAGE - {messages.chat.id} | {messages.from_user.id}")
             #  if message.from_user.id in call:  можно поставить проверку на определенного человека тогда в
             #  списке call = [] нужно указать его
+            Pause()
             messages.react(emoji='❤️')
         else:  # иначе:
             logger.error(f"FUCK | {messages.chat.id}")

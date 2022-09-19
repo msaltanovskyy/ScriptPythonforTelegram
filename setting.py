@@ -1,5 +1,7 @@
 import os
 import json
+import time as t
+
 from colorama import Fore
 
 
@@ -43,5 +45,7 @@ def sort_file():
         return sort_id
 
 
+def Pause():
+    t.sleep(10) #Пауза между проходами
 
 
