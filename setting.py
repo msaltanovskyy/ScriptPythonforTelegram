@@ -17,9 +17,9 @@ def add_group():
 # проверка на наличие файла
 def check_file():
     filename = input("Введите название файла: ")
-    check = os.path.isfile(f"parseuser/{filename}.json")
+    check = os.path.isfile(f"./parseuser/{filename}.json")
     if check is False:
-        f = open(f"parseuser/{filename}.json", "w+")
+        f = open(f"./parseuser/{filename}.json", "w+")
         f.write("[")
         f.close()
     else:
@@ -30,15 +30,15 @@ def check_file():
 # сортировка и поиск id пользователей в parseuser/{file}.json
 def sort_file():
     filename = input("Введите название файла(parseuser/filename): ")
-    with open(f"parseuser/{filename}.json") as file:
+    with open(f"./parseuser/{filename}.json") as file:
         user = json.load(file)
     sort_id = []
     for userid in user:
-        id = [userid['user']['id']]
-        if id not in sort_id:
-            #добавить отсортированые id в файл
-            sort_id.append(id)
-    with open(f"temp/{filename}_temp.txt", "w+") as file2: #файл с отсортиованным id
+        ids = [userid['user']['id']]
+        if ids not in sort_id:
+            # добавить отсортированые id в файл
+            sort_id.append(ids)
+    with open(f"./temp/{filename}_temp.txt", "w+") as file2:  # файл с отсортиованным id
         file2.writelines(str(sort_id))
         file2.close()
         file.close()
@@ -46,6 +46,10 @@ def sort_file():
 
 
 def Pause():
-    t.sleep(10) #Пауза между проходами
+    t.sleep(10)  # Пауза между проходами
 
 
+def list_group(app):
+    for dialog in app.get_dialogs():
+        if dialog.chat.type == "group":
+            print(dialog.chat.title)

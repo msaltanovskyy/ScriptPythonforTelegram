@@ -9,19 +9,16 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                    "@@@@@@@@@@@по последним отправленым сообщениям@@@@@@@@@@@@@@@@\n"
                    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
-app = auth_user("parseSession")
 group = add_group()
 check_file()
 
 
-@app.on_message()
-def parseUserMy(_, messages):
-
+def parseUserMy(app, messages):
     try:
         if messages.chat.id in group:  # если ID чата есть в списке то:
             logger.info(f"FIND NEW USER | {messages.chat.id}| {messages.from_user.username} || {messages.from_user.id}")
             users = app.get_chat_member(messages.chat.id, messages.from_user.id)
-            file = open("parseuser/parseruser.json", "a")
+            file = open("./parseuser/parseruser.json", "a")
             file.writelines(f"\n{users},\n")
             print("\n]\r")
             file.close()
@@ -30,5 +27,3 @@ def parseUserMy(_, messages):
     except:
         pass
 
-
-app.run()
