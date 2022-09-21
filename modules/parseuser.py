@@ -1,7 +1,6 @@
 from colorama import Fore
 from loguru import logger
 
-from modules.auth import auth_user
 from setting import add_group, check_file
 
 print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
@@ -10,7 +9,7 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 group = add_group()
-check_file()
+filename = check_file(directory="parseuser", format="json")
 
 
 def parseUserMy(app, messages):
@@ -18,7 +17,7 @@ def parseUserMy(app, messages):
         if messages.chat.id in group:  # если ID чата есть в списке то:
             logger.info(f"FIND NEW USER | {messages.chat.id}| {messages.from_user.username} || {messages.from_user.id}")
             users = app.get_chat_member(messages.chat.id, messages.from_user.id)
-            file = open("./parseuser/parseruser.json", "a")
+            file = open(f"./parseuser/{filename}.json", "a")
             file.writelines(f"\n{users},\n")
             print("\n]\r")
             file.close()

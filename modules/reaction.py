@@ -10,7 +10,7 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 group = add_group()
 
 
-def reaction_massage(_,messages):
+def reaction_massage(_, messages):
     try:
         if messages.chat.id in group:  # если ID чата есть в списке то:
             logger.info(f"FIND NEW MESSAGE - {messages.chat.id} | {messages.from_user.id}")

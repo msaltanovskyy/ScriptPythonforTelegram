@@ -15,16 +15,16 @@ def add_group():
 
 
 # проверка на наличие файла
-def check_file():
+def check_file(directory, format):
     filename = input("Введите название файла: ")
-    check = os.path.isfile(f"./parseuser/{filename}.json")
+    check = os.path.isfile(f"./{directory}/{filename}.{format}")
     if check is False:
-        f = open(f"./parseuser/{filename}.json", "w+")
+        f = open(f"./{directory}/{filename}.{format}", "w+")
         f.write("[")
         f.close()
     else:
         print(Fore.RED + f"Файл с именним {filename}.json существует")
-        check_file()
+    return filename
 
 
 # сортировка и поиск id пользователей в parseuser/{file}.json
@@ -48,7 +48,7 @@ def sort_file():
 def Pause():
     t.sleep(10)  # Пауза между проходами
 
-
+# Не используеться
 def list_group(app):
     for dialog in app.get_dialogs():
         if dialog.chat.type == "group":

@@ -9,5 +9,5 @@ def auth_user():
         print(Fore.RED + "Пустое поле!!!")
         api_id = int(input("Api_id: "))
         api_hash = input("Api_hash: ")
-    app = Client(f"session", workdir='./session', api_id=api_id, api_hash=api_hash)
+    app = Client("session", workdir='./session', api_id=api_id, api_hash=api_hash)
     return app

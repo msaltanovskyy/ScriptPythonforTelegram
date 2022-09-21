@@ -1,6 +1,6 @@
 from colorama import Fore
 
-from setting import sort_file, Pause, list_group
+from setting import sort_file, Pause
 from loguru import logger
 
 print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
@@ -11,7 +11,7 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 def Inviter(app):
     try:
         chat_id = input("Введите id канала: ")
-        if chat_id is None:
+        if chat_id is True:
             user_id = sort_file()
             for user in user_id:
                 Pause()
