@@ -50,6 +50,20 @@ def sort_file():
 def Pause():
     t.sleep(10)  # Пауза между проходами
 
+
+def create_directory():
+    print(Fore.YELLOW+"Проверка наличия диркторий....")
+    t.sleep(2)
+    list_dir = ["temp", "parseuser", "session"]
+    for dir in list_dir:
+        if os.path.exists(dir) is False:
+            os.mkdir(f"{dir}")
+            print(Fore.YELLOW + f"Директория {dir} не найдена и создана....")
+            t.sleep(2)
+        else:
+            print(Fore.YELLOW + f"Директория {dir} обнаружена....")
+            t.sleep(2)
+
 # Не используеться
 def list_group(app):
     for dialog in app.get_dialogs():

@@ -1,10 +1,11 @@
 from colorama import Fore
-from pyrogram.handlers import MessageHandler, UserStatusHandler, RawUpdateHandler, DisconnectHandler
+from pyrogram.handlers import MessageHandler
 
 from modules import auth
+from setting import create_directory
 
+create_directory()
 app = auth.auth_user()
-
 
 def main():
     select = input(Fore.GREEN +"\032 1. Реакции на сообщения\n"
