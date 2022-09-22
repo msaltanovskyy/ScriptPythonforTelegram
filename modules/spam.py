@@ -1,6 +1,6 @@
 from colorama import Fore
 
-from setting import sort_file, Pause
+from setting import Pause
 from loguru import logger
 
 print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
@@ -8,14 +8,17 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 
-user_id = sort_file()
 text = input("Введите сообщение: ")
+user_count = list(map(int, input(Fore.GREEN + "\032 Id пользователей (через запятую): ").split(",")))
+list_len = len(user_count)
+print(f"Количество пользователей: {list_len}")
 
 
-def spamBot(app, user):
-    try:
-        logger.info(f"Messages send - id| {user_id} | status {user.status} |")
-        app.send_message(user_id, f"{text}", protect_content=True)
-        Pause()
-    except:
-        pass
+def spamBot(app):
+    with app:
+        for users in user_count:
+            logger.info(f"Messages send - id| {users} |")
+            app.send_message(users, f"{text}", protect_content=True)
+            Pause()
+
+

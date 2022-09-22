@@ -1,5 +1,5 @@
 from colorama import Fore
-from pyrogram.handlers import MessageHandler, UserStatusHandler, RawUpdateHandler
+from pyrogram.handlers import MessageHandler, UserStatusHandler, RawUpdateHandler, DisconnectHandler
 
 from modules import auth
 
@@ -10,6 +10,7 @@ def main():
     select = input(Fore.GREEN +"\032 1. Реакции на сообщения\n"
                    "\032 2. Парсер пользователей по сообщениям\n"
                     "\032 3. Инвайтер\n"
+                    "\032 4. Спам-бот\n"
                    "Введите число: ")
     if select == "1":
         from modules import reaction
@@ -21,11 +22,11 @@ def main():
         app.run()
     elif select == "3":
         from modules import inviter
-        app.add_handler(inviter.Inviter)
+        inviter.Inviter(app)
         app.run()
     elif select == "4":
         from modules import spam
-        app.add_handler(UserStatusHandler(spam.spamBot))
+        spam.spamBot(app)
         app.run()
     else:
         print("Команда не найдена")

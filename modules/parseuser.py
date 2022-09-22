@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from colorama import Fore
 from loguru import logger
 
@@ -17,9 +19,9 @@ def parseUserMy(app, messages):
         if messages.chat.id in group:  # если ID чата есть в списке то:
             logger.info(f"FIND NEW USER | {messages.chat.id}| {messages.from_user.username} || {messages.from_user.id}")
             users = app.get_chat_member(messages.chat.id, messages.from_user.id)
-            file = open(f"./parseuser/{filename}.json", "a")
-            file.writelines(f"\n{users},\n")
-            print("\n]\r")
+            path = Path("parseuser", f"{filename}.json")
+            file = open(path, "a")
+            file.writelines(f"\n{users},\n]\r")
             file.close()
         else:
             logger.error(f"FUCK | {messages.chat.id}")
