@@ -21,7 +21,7 @@ def parseUserMy(app, messages):
             users = app.get_chat_member(messages.chat.id, messages.from_user.id)
             path = Path("parseuser", f"{filename}.json")
             file = open(path, "a")
-            file.writelines(f"\n{users},\n]\r")
+            file.writelines(f"\n{users['user']},\n]\r")
             file.close()
         else:
             logger.error(f"FUCK | {messages.chat.id}")

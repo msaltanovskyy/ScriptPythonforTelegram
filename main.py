@@ -1,3 +1,5 @@
+import time
+
 from colorama import Fore
 from pyrogram.handlers import MessageHandler
 
@@ -8,10 +10,13 @@ create_directory()
 app = auth.auth_user()
 
 def main():
+    print(Fore.LIGHTRED_EX+"Выбирите команду для старта (0-5)")
     select = input(Fore.GREEN +"\032 1. Реакции на сообщения\n"
                    "\032 2. Парсер пользователей по сообщениям\n"
                     "\032 3. Инвайтер\n"
                     "\032 4. Спам-бот\n"
+                    "\032 5. Вступление в чаты\n"
+                    "\032 0. Выход\n"
                    "Введите число: ")
     if select == "1":
         from modules import reaction
@@ -29,6 +34,14 @@ def main():
         from modules import spam
         spam.spamBot(app)
         app.run()
+    elif select == "5":
+        from modules import joinchat
+        joinchat.join_to_chat(app)
+        app.run()
+    elif select == "0":
+        print(Fore.LIGHTRED_EX+"Работа программы завершена....")
+        time.sleep(3)
+        quit()
     else:
         print("Команда не найдена")
         main()

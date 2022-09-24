@@ -1,5 +1,6 @@
 from colorama import Fore
 
+from main import main
 from setting import Pause
 from loguru import logger
 
@@ -20,5 +21,8 @@ def spamBot(app):
             logger.info(f"Messages send - id| {users} |")
             app.send_message(users, f"{text}", protect_content=True)
             Pause()
+        else:
+            print(Fore.YELLOW + "Завершено!!!")
+            main()
 
 

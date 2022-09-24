@@ -1,5 +1,7 @@
 from colorama import Fore
 import time as t
+
+from main import main
 from setting import sort_file, Pause
 from loguru import logger
 
@@ -21,14 +23,10 @@ chat_id = input("Введите id канала: ")
 
 def Inviter(app):
     with app:
-        try:
-            if len(chat_id) > 5:
-                for users in user_id:
-                    logger.info(f"User added to group - id| {users} |")
-                    app.add_chat_members(chat_id, users)
-                    Pause()
-            else:
-                print(Fore.RED + "Введите id канала")
-                Inviter(app)
-        except:
-            pass
+        for users in user_id:
+            logger.info(f"User added to group - id| {users} |")
+            app.add_chat_members(chat_id, users)
+            Pause()
+        else:
+            print(Fore.YELLOW + "Завершено!!!")
+            main()
