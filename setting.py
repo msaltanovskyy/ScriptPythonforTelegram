@@ -56,13 +56,13 @@ def create_directory():
     print(Fore.YELLOW+"Проверка наличия диркторий....")
     t.sleep(2)
     path = [Path("temp"), Path("parseuser"), Path("session")]
-    for dir in path:
-        if os.path.exists(dir) is False:
-            os.mkdir(f"{dir}")
-            print(Fore.YELLOW + f"Директория {dir} не найдена и создана....")
+    for folder in path:
+        if os.path.exists(folder) is False:
+            os.mkdir(f"{folder}")
+            print(Fore.YELLOW + f"Директория {folder} не найдена и создана....")
             t.sleep(2)
         else:
-            print(Fore.YELLOW + f"Директория {dir} обнаружена....")
+            print(Fore.YELLOW + f"Директория {folder} обнаружена....")
             t.sleep(2)
 
 # Не используеться
