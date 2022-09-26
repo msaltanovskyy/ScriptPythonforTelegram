@@ -11,7 +11,7 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 group = add_group()
-filename = check_file(directory="parseuser", format="json")
+filename = check_file(directory="parseuser", extension="json")
 
 
 def parseUserMy(app, messages):

@@ -3,7 +3,8 @@ import json
 import time as t
 
 from colorama import Fore
-from pathlib import Path
+from pathlib import Path, PurePath
+
 
 # добавление id группы
 def add_group():
@@ -15,9 +16,9 @@ def add_group():
 
 
 # проверка на наличие файла
-def check_file(directory, format):
+def check_file(directory, extension):
     filename = input("Введите название файла: ")
-    path = Path(f"{directory}", f"{filename}.{format}")
+    path = Path(f"{directory}", f"{filename}.{extension}")
     check = os.path.isfile(path)
     if check is False:
         f = open(path, "w+")
@@ -54,8 +55,8 @@ def Pause():
 def create_directory():
     print(Fore.YELLOW+"Проверка наличия диркторий....")
     t.sleep(2)
-    list_dir = ["temp", "parseuser", "session"]
-    for dir in list_dir:
+    path = [Path("temp"), Path("parseuser"), Path("session")]
+    for dir in path:
         if os.path.exists(dir) is False:
             os.mkdir(f"{dir}")
             print(Fore.YELLOW + f"Директория {dir} не найдена и создана....")
