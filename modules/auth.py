@@ -26,7 +26,7 @@ def auth_user():
         with open(path, "w") as file:
             json.dump(json_data, file, indent=4)
         file.close()
-        app = Client(f"session", workdir='./session', api_id=api_id, api_hash=api_hash)
+        app = Client("session", workdir=f'{wd}/session', api_id=api_id, api_hash=api_hash)
         return app
     else:
         with open(path) as file:
@@ -37,5 +37,5 @@ def auth_user():
         print(Fore.GREEN + "АВТОРИЗИРОВАННЫЙ...\n",
               Fore.RED + "Для авторизации нового аккаунта удалите файл config.json")
         time.sleep(2)
-        app = Client(f"session", workdir='./session', api_id=data['api_id'], api_hash=data['api_hash'])
+        app = Client(f"session", workdir=f'{wd}/session', api_id=data['api_id'], api_hash=data['api_hash'])
         return app
