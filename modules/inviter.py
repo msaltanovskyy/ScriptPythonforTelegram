@@ -10,7 +10,8 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 print(Fore.YELLOW + "@@@@@@@@@@@@@@@README@@@@@@@@@@@@@@@@@@@@\n"
       "В файле temp находятся все спарсеные id,\n",
-      "необходимо скопировать и вставить\n",
+      "необходимо скопировать и вставить,если в папке осуствуют файлы,\n",
+      "тогда запустите функцию номер 6",
       Fore.RED+"(без квадратных кавычек)\n",
       "или вставить собственные")
 
@@ -21,7 +22,7 @@ def Inviter(app):
     with app:
         for users in user_id:
             logger.info(f"User added to group - id| {users} |")
-            app.add_chat_members(chat_id, users)
+            app.add_chat_members(int(chat_id), users)
             Pause()
         else:
             print(Fore.YELLOW + "Завершено!!!")
