@@ -5,6 +5,8 @@ import time as t
 from colorama import Fore
 from pathlib import Path
 
+from main import main
+
 
 # добавление id группы
 def add_group():
@@ -34,6 +36,8 @@ def check_file(directory, extension):
 def sort_file():
     wd = get_directory_script()
     filename = input("Введите название файла(parseuser/filename): ")
+    print(Fore.YELLOW + "Сортировка id из файла...")
+    t.sleep(5)
     path = Path(wd, "parseuser", f"{filename}.json")
     with open(path) as file:
         user = json.load(file)
@@ -48,6 +52,7 @@ def sort_file():
         file2.writelines(str(f"{sort_id,}"))
         file2.close()
         file.close()
+    main()
 
 
 def Pause():
@@ -68,7 +73,7 @@ def create_directory():
             t.sleep(2)
         else:
             print(Fore.YELLOW + f"Директория {folder} обнаружена....")
-            t.sleep(2)
+            t.sleep(1)
 
 
 # получение пути к скрипту

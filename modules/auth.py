@@ -6,10 +6,11 @@ from pathlib import Path
 from colorama import Fore
 from pyrogram import Client
 
-from setting import get_directory_script
+from setting import get_directory_script, create_directory
 
 
 def auth_user():
+    create_directory()
     wd = get_directory_script()
     path = Path(wd, "config.json")
     if os.path.isfile(path) is False:
