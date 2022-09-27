@@ -6,9 +6,12 @@ from pathlib import Path
 from colorama import Fore
 from pyrogram import Client
 
+from setting import get_directory_script
+
 
 def auth_user():
-    path = Path("config.json")
+    wd = get_directory_script()
+    path = Path(wd, "config.json")
     if os.path.isfile(path) is False:
         print(Fore.YELLOW + "Пройдите авторизацию!!!")
         time.sleep(2)
