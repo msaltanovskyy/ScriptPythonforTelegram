@@ -1,3 +1,4 @@
+from pyrogram.errors import BadRequest
 from colorama import Fore
 
 from main import main
@@ -21,9 +22,14 @@ def Inviter(app):
     chat_id = input("Введите id канала: ")
     with app:
         for users in user_id:
-            logger.info(f"User added to group - id| {users} |")
-            app.add_chat_members(int(chat_id), users)
-            Pause()
+            try:
+                logger.info(f"User added to group - id| {users} |")
+                app.add_chat_members(int(chat_id), users)
+                Pause()
+            except BadRequest:
+                logger.info(f"User is not added - id |{users}|")
+            except:
+                pass
         else:
             print(Fore.YELLOW + "Завершено!!!")
             main()

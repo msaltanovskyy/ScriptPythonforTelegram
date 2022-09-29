@@ -10,7 +10,7 @@ from main import main
 
 # добавление id группы
 def add_group():
-    group = list(map(int, input(Fore.GREEN + "\032id групп (через запятую): ").split(",")))
+    group = list(map(int, input(Fore.GREEN + "\032 Id групп (через запятую): ").split(",")))
     if not group:
         print("Пустое поле:")
         group = list(map(int, input(Fore.GREEN + "\032id групп (через запятую): ").split(",")))

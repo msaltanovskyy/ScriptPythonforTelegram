@@ -8,7 +8,7 @@ from modules import auth
 
 def main():
     app = auth.auth_user()
-    print(Fore.LIGHTRED_EX + "Выбирите команду для старта (0-5)")
+    print(Fore.LIGHTRED_EX + "Выбирите команду для старта (0-6)")
     select = input(Fore.GREEN + "\032 1. Реакции на сообщения\n"
                                 "\032 2. Парсер пользователей по сообщениям\n"
                                 "\032 3. Инвайтер\n"
