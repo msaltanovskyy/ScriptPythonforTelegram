@@ -25,34 +25,10 @@ def check_file(directory, extension):
     check = os.path.isfile(path)
     if check is False:
         f = open(path, "w+")
-        f.write("[")
         f.close()
     else:
         print(Fore.RED + f"Файл с имением {filename}.json существует")
     return filename
-
-
-# сортировка и поиск id пользователей в parseuser/{file}.json
-def sort_file():
-    wd = get_directory_script()
-    filename = input("Введите название файла(parseuser/filename): ")
-    print(Fore.YELLOW + "Сортировка id из файла...")
-    t.sleep(5)
-    path = Path(wd, "parseuser", f"{filename}.json")
-    with open(path) as file:
-        user = json.load(file)
-    sort_id = []
-    for userid in user:
-        ids = [userid['user']['id']]
-        if ids not in sort_id:
-            # добавить отсортированные id в файл
-            sort_id.append(ids)
-    path2 = Path(wd, "temp", f'{filename}_temp.txt')
-    with open(path2, "w+") as file2:  # файл с отсортированным id
-        file2.writelines(str(f"{sort_id,}"))
-        file2.close()
-        file.close()
-    main()
 
 
 def Pause():

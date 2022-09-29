@@ -14,7 +14,6 @@ def main():
                                 "\032 3. Инвайтер\n"
                                 "\032 4. Спам-бот\n"
                                 "\032 5. Вступление в чаты\n"
-                                "\032 6. Сортировка файла парсера\n"
                                 "\032 0. Выход\n"
                                 "Введите число: ")
     if select == "1":
@@ -37,9 +36,6 @@ def main():
         from modules import joinchat
         joinchat.join_to_chat(app)
         app.run()
-    elif select == "6":
-        from setting import sort_file
-        sort_file()
     elif select == "0":
         print(Fore.LIGHTRED_EX + "Работа программы завершена....")
         time.sleep(3)

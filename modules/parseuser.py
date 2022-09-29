@@ -11,18 +11,17 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 group = add_group()
-filename = check_file(directory="parseuser", extension="json")
+filename = check_file(directory="parseuser", extension="txt")
 wd = get_directory_script()
 
 
-def parseUserMy(app, messages):
+def parseUserMy(_, messages):
     try:
         if messages.chat.id in group:  # если ID чата есть в списке то:
             logger.info(f"FIND NEW USER | {messages.chat.id}| {messages.from_user.username} || {messages.from_user.id}")
-            users = app.get_chat_member(messages.chat.id, messages.from_user.id)
-            path = Path(f"{wd}", "parseuser", f"{filename}.json")
+            path = Path(f"{wd}", "parseuser", f"{filename}.txt")
             file = open(path, "a")
-            file.writelines(f"\n{users},\n]\r")
+            file.writelines(f"{messages.from_user.id},\r")
             file.close()
         else:
             logger.error(f"FUCK | {messages.chat.id}")

@@ -10,9 +10,8 @@ print(Fore.GREEN + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 print(Fore.YELLOW + "@@@@@@@@@@@@@@@README@@@@@@@@@@@@@@@@@@@@\n"
-      "В файле temp находятся все спарсеные id,\n",
-      "необходимо скопировать и вставить,если в папке осуствуют файлы,\n",
-      "тогда запустите функцию номер 6",
+      "В файле parseuser находятся все спарсеные id,\n",
+      "необходимо скопировать и вставить\n",
       Fore.RED+"(без квадратных кавычек)\n",
       "или вставить собственные")
 
@@ -20,8 +19,9 @@ print(Fore.YELLOW + "@@@@@@@@@@@@@@@README@@@@@@@@@@@@@@@@@@@@\n"
 def Inviter(app):
     user_id = list(map(int, input(Fore.GREEN + "\032 Id пользователей (через запятую): ").split(",")))
     chat_id = input("Введите id канала: ")
+    user = list(set(user_id))
     with app:
-        for users in user_id:
+        for users in user:
             try:
                 logger.info(f"User added to group - id| {users} |")
                 app.add_chat_members(int(chat_id), users)
